@@ -55,7 +55,7 @@ function Movies() {
                       Rating: {value.vote_average}
                     </p>
                    <div className="d-flex justify-end">
-                    <button className="btn btn-outline-success"
+                    <button className="btn favourite_button"
                      onClick={(e) => {
                       e.preventDefault()
                       Add_To_Favourite(value)

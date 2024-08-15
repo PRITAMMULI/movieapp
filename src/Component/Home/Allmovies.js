@@ -45,7 +45,7 @@ function Allmovies() {
               className="form-select sort-by filter_option"
               aria-label="Default select example"
             >
-              <option value="default">---select---</option>
+              <option value="default">none</option>
               <option value="byRating">By Rating</option>
             </select>
           </p>
@@ -78,7 +78,7 @@ function Allmovies() {
                       Rating: {value.vote_average}
                     </p>
                     <div className="d-flex justify-end">
-                      <button className="btn btn-outline-success" onClick={(e) => {
+                      <button className="btn favourite_button" onClick={(e) => {
                         e.preventDefault()
                         Add_To_Favourite(value)
                       }}>
@@ -88,39 +88,6 @@ function Allmovies() {
                   </div>
                 </div>
               </div>
-              {/* <div
-                key={value.id}
-                className="col-lg-3 col-md-6 col-sm-6 col-12 mb-4"
-              >
-                <div className="card molvieCard">
-                  <img
-                    src={value.poster_path}
-                    className="card-img-top movie_card_image"
-                    alt={value.title}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title text-center movie_title">
-                      {value.title}
-                    </h5>
-                    <div className="movies_heading">
-                      <p className="card-text text-white d-flex">
-                        Release Year: {value.release_year}
-                      </p>
-                      <p className="card-text text-white d-flex">
-                        Rating: {value.vote_average}
-                      </p>
-                    </div>
-                    <div className="d-flex justify-end">
-                      <button
-                        className="btn btn-outline-success"
-                        onClick={() => AddfavouriteMovie(value.id)}
-                      >
-                        <Favorite /> Add to Favourite
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </>
           );
         })}

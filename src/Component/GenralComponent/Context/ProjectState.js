@@ -91,16 +91,25 @@ function ProjectState(props) {
 
   const deleteFavourites = async (id) => {
     try {
-      toast.success(`movie is added in favourite list`, {
+      const favouriteDoc = doc(db, "favourite", id);
+      
+      // Delete the document from Firestore
+      await deleteDoc(favouriteDoc);
+  
+      // Notify the user that the movie was removed
+      toast.success(`Movie removed from favourite list`, {
         position: "top-center",
         theme: "colored",
       });
-      const favouriteDoc = doc(db, "favourite", id);
-      return deleteDoc(favouriteDoc);
+  
+      // Fetch the updated favourite movie list
+      getFavouriteMovie();
+  
     } catch (error) {
       console.log("error", error);
     }
   };
+  
 
   return (
     <>

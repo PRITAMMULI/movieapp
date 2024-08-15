@@ -33,7 +33,7 @@ body {
 }
 
 .molvieCard:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
     cursor: pointer;
     border: 4px solid #ffff00;
 }
@@ -73,5 +73,15 @@ body {
 .filter_functionality {
      display: flex;
     justify-content: space-between;
+}
+
+.favourite_button {
+    border: 2px solid #c1dd97;
+    color: #c1dd97;
+}
+
+.favourite_button:hover {
+    background-color: #c1dd97;
+    color: #ffff;
 }
 /* all movies css ends */
