@@ -13,6 +13,7 @@ function Allmovies() {
     handleSortChange,
     searchQuery,
     AddfavouriteMovie,
+    Add_To_Favourite,
   } = useContext(ProjectContext);
 
   useEffect(() => {
@@ -23,7 +24,8 @@ function Allmovies() {
     setNewfeatured(movies);
   }, [movies]);
 
-   return (
+  console.log(movies);
+  return (
     <>
       <Navbar />
       <div className="row mb-4">
@@ -51,41 +53,77 @@ function Allmovies() {
       </div>
 
       <div className="row">
-        {newfeatured.map((value) => (
-          <div
-            key={value.id}
-            className="col-lg-3 col-md-6 col-sm-6 col-12 mb-4"
-          >
-            <div className="card molvieCard">
-              <img
-                src={value.poster_url}
-                className="card-img-top movie_card_image"
-                alt={value.title}
-              />
-              <div className="card-body">
-                <h5 className="card-title text-center movie_title">
-                  {value.title}
-                </h5>
-                <div className="movies_heading">
-                  <p className="card-text text-white d-flex">
-                    Release Year: {value.release_year}
-                  </p>
-                  <p className="card-text text-white d-flex">
-                    Rating: {value.rating}
-                  </p>
-                </div>
-                <div className="d-flex justify-end">
-                  <button
-                    className="btn btn-outline-success"
-                    onClick={() => AddfavouriteMovie(value.id)}
-                  >
-                    <Favorite /> Add to Favourite
-                  </button>
+        {newfeatured.map((value) => {
+          console.log(value);
+          return (
+            <>
+              <div
+                key={value.id}
+                className="col-lg-3 col-md-6 col-sm-6 col-12 mb-4"
+              >
+                <div className="card molvieCard">
+                  <img
+                    src={value.poster_path}
+                    className="card-img-top movie_card_image"
+                    alt={value.title}
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title text-center movie_title">
+                      {value.original_title}
+                    </h5>
+                    <p class="card-text text-white d-flex">
+                      Release Year: {value.release_date}
+                    </p>
+                    <p class="card-text text-white d-flex">
+                      Rating: {value.vote_average}
+                    </p>
+                    <div className="d-flex justify-end">
+                      <button className="btn btn-outline-success" onClick={(e) => {
+                        e.preventDefault()
+                        Add_To_Favourite(value)
+                      }}>
+                        <Favorite /> Add to Favourite
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
+              {/* <div
+                key={value.id}
+                className="col-lg-3 col-md-6 col-sm-6 col-12 mb-4"
+              >
+                <div className="card molvieCard">
+                  <img
+                    src={value.poster_path}
+                    className="card-img-top movie_card_image"
+                    alt={value.title}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title text-center movie_title">
+                      {value.title}
+                    </h5>
+                    <div className="movies_heading">
+                      <p className="card-text text-white d-flex">
+                        Release Year: {value.release_year}
+                      </p>
+                      <p className="card-text text-white d-flex">
+                        Rating: {value.vote_average}
+                      </p>
+                    </div>
+                    <div className="d-flex justify-end">
+                      <button
+                        className="btn btn-outline-success"
+                        onClick={() => AddfavouriteMovie(value.id)}
+                      >
+                        <Favorite /> Add to Favourite
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+            </>
+          );
+        })}
       </div>
     </>
   );

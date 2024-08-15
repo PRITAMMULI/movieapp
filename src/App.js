@@ -6,6 +6,7 @@ import "./Component/GenralComponent/Global.css";
 import ProjectState from "./Component/GenralComponent/Context/ProjectState";
 import Allmovies from "./Component/Home/Allmovies";
 import Favourite from "./Component/Home/Favourite";
+import Dummy from "./Dummy";
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
         <Router>
           <ProjectState>
             <Routes>
+              <Route exact path="/dummy" element={<Dummy />} /> 
               <Route exact path="/favourite" element={<Favourite />} />
               <Route exact path="/" element={<Home />} />
               <Route exact path="/allmovies" element={<Allmovies />} />

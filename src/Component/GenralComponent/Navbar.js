@@ -42,7 +42,7 @@ function Navbar() {
               </li>
 
               <li class="nav-item">
-                <Link class="nav-link disabled" aria-disabled="true" to="/favourite">
+                <Link class="nav-link" aria-disabled="true" to="/favourite">
                    Favourite
                 </Link>
               </li>

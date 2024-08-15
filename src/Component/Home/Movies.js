@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Favorite } from "@mui/icons-material";
 
 function Movies() {
-  const { fetchDetails, movies } = useContext(ProjectContext);
+  const { fetchDetails, movies, Add_To_Favourite } = useContext(ProjectContext);
   const [showAll, setShowAll] = useState(false);
 
   const navigate = useNavigate();
@@ -32,6 +32,7 @@ function Movies() {
 
       <div className="row movies_card_row">
         {moviesToShow.map((value, index) => {
+          console.log(value)
           return (
             <div
               key={value.id}
@@ -39,24 +40,27 @@ function Movies() {
             >
               <div className="card molvieCard">
                 <img
-                  src={value.poster_url}
+                  src={value.poster_path}
                   className="card-img-top movie_card_image"
                   alt={value.title}
                 />
                 <div class="card-body">
                   <h5 class="card-title text-center movie_title">
-                    {value.title}
+                    {value.original_title}
                   </h5>
-                  <div className="movies_heading">
-                    <p class="card-text text-white d-flex">
-                      Release Year: {value.release_year}
+                     <p class="card-text text-white d-flex">
+                      Release Year: {value.release_date}
                     </p>
                     <p class="card-text text-white d-flex">
-                      Rating: {value.rating}
+                      Rating: {value.vote_average}
                     </p>
-                  </div>
-                  <div className="d-flex justify-end">
-                    <button className="btn btn-outline-success">
+                   <div className="d-flex justify-end">
+                    <button className="btn btn-outline-success"
+                     onClick={(e) => {
+                      e.preventDefault()
+                      Add_To_Favourite(value)
+                    }}
+                    >
                       <Favorite /> Add to Favourite
                     </button>
                   </div>
